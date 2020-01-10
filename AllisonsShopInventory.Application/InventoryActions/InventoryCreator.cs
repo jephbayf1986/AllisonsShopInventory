@@ -10,31 +10,31 @@ namespace AllisonsShopInventory.InventoryActions
     {
         public static void Create(IList<InventoryItem> inventoryList)
         {
-            string itemName = ConsoleHelper.ReadString("Enter the Name of the new Item...");
+            string ItemName = ConsoleHelper.ReadString("Enter the Name of the new Item...");
 
-            int itemSellin = ConsoleHelper.ReadInt("Enter the 'Sell In' days of the new Item...", "The 'Sell In' days must be a number! Please try again");
+            int ItemSellin = ConsoleHelper.ReadInt("Enter the 'Sell In' days of the new Item...", "The 'Sell In' days must be a number! Please try again");
 
-            int itemQuality = ConsoleHelper.ReadInt("Enter the Quality level of the new Item...", "The Quality level must be a number! Please try again");
+            int ItemQuality = ConsoleHelper.ReadInt("Enter the Quality level of the new Item...", "The Quality level must be a number! Please try again");
 
             Dictionary<string, InventoryItem> InventoryChoice = new Dictionary<string, InventoryItem>
                 { 
-                    { InventoryNames.AgedBrie, new AgedBrie(itemSellin, itemQuality) },
-                    { InventoryNames.ChristmasCracker, new ChristmasCracker(itemSellin, itemQuality) },
-                    { InventoryNames.FreshItem, new FreshItem(itemSellin, itemQuality) },
-                    { InventoryNames.FrozenItem, new FrozenItem(itemSellin, itemQuality) },
-                    { InventoryNames.Soap, new Soap(itemSellin, itemQuality) }
+                    { InventoryNames.AgedBrie, new AgedBrie(ItemSellin, ItemQuality) },
+                    { InventoryNames.ChristmasCracker, new ChristmasCracker(ItemSellin, ItemQuality) },
+                    { InventoryNames.FreshItem, new FreshItem(ItemSellin, ItemQuality) },
+                    { InventoryNames.FrozenItem, new FrozenItem(ItemSellin, ItemQuality) },
+                    { InventoryNames.Soap, new Soap(ItemSellin, ItemQuality) }
                 };
 
-            if (InventoryChoice.ContainsKey(itemName))
+            if (InventoryChoice.ContainsKey(ItemName))
             {
-                inventoryList.Add(InventoryChoice[itemName]);
+                inventoryList.Add(InventoryChoice[ItemName]);
             }
             else
             {
-                inventoryList.Add(new InvalidItem(itemName, itemSellin, itemQuality));
+                inventoryList.Add(new InvalidItem(ItemName, ItemSellin, ItemQuality));
             }
             
-            Console.WriteLine($"{itemName} has been added to your inventory, you now have {inventoryList.Count} items in total");
+            Console.WriteLine($"{ItemName} has been added to your inventory, you now have {inventoryList.Count} items in total");
             ConsoleHelper.WriteHorizontalRule();
 
             InventoryMenu.Options(inventoryList);
