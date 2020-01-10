@@ -1,5 +1,4 @@
-# AllisonsShopInventory
-Test Code for Allisons Shop Inventory Console App
+# Allisons Shop Inventory
 
 Notes:
  * Made with .NET Core 3.0 and C#
